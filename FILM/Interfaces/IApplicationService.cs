@@ -11,6 +11,6 @@ namespace FILM.Interfaces
         public void Add(Film film);
         public List<Film> GetAll();
         public Film GetSome(int filmId);
-        public void Del(int filmId);
+        public void Del(Film film);
     }
 }

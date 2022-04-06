@@ -20,9 +20,9 @@ namespace FILM.Services
             db.SaveChanges();
         }
 
-        public void Del(int filmId)
+        public void Del(Film film)
         {
-            db.Films.Remove(filmId);
+            db.Films.Remove(film);
             db.SaveChanges();
         }
 

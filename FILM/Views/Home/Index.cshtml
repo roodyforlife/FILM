@@ -40,7 +40,7 @@
                 <img src="@u.PhotoPath" alt="">
                 @if (ViewBag.IsAdmin)
                 {
-                    <a asp-action="Del" asp-controller="Home" asp-route-filmId="@u.Id"><div class="text3 item__delete">Удалить</div></a>
+                    <a asp-action="Del" asp-route-filmIdDelete="@u.Id"><div class="text3 item__delete">Удалить</div></a>
                 }
             </div>
             <div class="text3 item__title">@u.Title</div>

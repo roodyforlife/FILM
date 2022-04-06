@@ -31,9 +31,9 @@ namespace FILM.Controllers
             films = applicationService.GetAll(); 
             return View(films);
         }
-        public IActionResult Del(int filmId)
+        public IActionResult Del(int filmIdDelete)
         {
-
+            applicationService.Del(applicationService.GetSome(filmIdDelete));
             return RedirectPermanent("../Home/Index");
         }
     }
