@@ -1,0 +1,50 @@
+﻿@using FILM.Models
+@model IEnumerable<Film>
+@{
+    Layout = "_Layout";
+}
+<div class="content__title text2">Онлайн просмотр фильмов</div>
+<div class="text1 content__desc">
+    Здесь вы можете найти свой любимый фильм или сериал всего в два клика и прекрасно провести вечер в кругу семьи. База
+    наших фильм постоянно обновляется, поэтому вас будет что глянуть
+</div>
+<div class="content__menu">
+    <div class="menu__category">
+        <select class="text3" name="" id="">
+            <option selected disabled>Жанры</option>
+            <option value="boevik">Боевики</option>
+            <option value="comedian">Комедии</option>
+        </select>
+        <select class="text3" name="" id="">
+            <option selected disabled>Страны</option>
+            <option value="ukraine">Украина</option>
+            <option value="usa">США</option>
+        </select>
+        <select class="text3" name="" id="">
+            <option selected disabled>Годы</option>
+            <option value="2021">2021</option>
+            <option value="2020">2020</option>
+        </select>
+    </div>
+    <div class="menu__buttons">
+        <a href=""><div class="text1 menu__zero">Сбросить фильтры</div></a>
+        <a href=""><div class="text3 menu__search">Поиск</div></a>
+    </div>
+</div>
+<div class="content__film">
+    @foreach (var u in Model)
+    {
+    <div class="film__item">
+        <a asp-action="Watch" asp-controller="Watch" asp-route-filmId="@u.Id">
+            <div class="item__photo">
+                <img src="@u.PhotoPath" alt="">
+                @if (ViewBag.IsAdmin)
+                {
+                    <a asp-action="Del" asp-controller="Home" asp-route-filmId="@u.Id"><div class="text3 item__delete">Удалить</div></a>
+                }
+            </div>
+            <div class="text3 item__title">@u.Title</div>
+        </a>
+    </div>
+    }
+</div>

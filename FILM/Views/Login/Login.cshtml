@@ -1,0 +1,27 @@
+﻿@model FILM.Models.User
+@{
+    Layout = "_Layout";
+}
+<link href="~/css/login.css" rel="stylesheet" />
+<form asp-action="Login" asp-controller="Login" method="post">
+    <div class="login">
+        <div class="login__title">
+            <a style="border-bottom: 1px solid #fff;" class="text3 login__button">Войти</a>
+            <a asp-action="Registration" asp-controller="Registration" class="text1 regist__button">Регистрация</a>
+        </div>
+        <div class="login__input">
+            <div class="input__flex">
+                <p class="text1">Введите логин</p>
+                <input asp-for="Login" class="text3" type="text" />
+                <span asp-validation-for="Login" class="field-validation-valid"></span>
+            </div>
+            <div class="input__flex">
+                <p class="text1">Введите пароль</p>
+                <input asp-for="Password" class="text3" type="password" />
+                <span asp-validation-for="Password" class="field-validation-valid"></span>
+                <span asp-validation-for="Name" class="field-validation-valid"></span>
+            </div>
+            <button type="submit" class="text3 input__button">Войти</button>
+        </div>
+    </div>
+</form>

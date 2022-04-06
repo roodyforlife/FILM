@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "_Layout";
+}
+<link href="~/css/profile.css" rel="stylesheet" />
+<div class="profile__block">
+    <div class="block__content">
+        <div class="block__avatar"></div>
+        <div class="text3 block__title">@ViewBag.UserBase.Name</div>
+    </div>
+    <div style="display: flex;">
+        <form asp-action="Ex" asp-controller="Profile" method="post">
+            <button type="submit" class="text1 profile__exit">Выйти</button>
+        </form>
+    </div>
+</div>
+@if(ViewBag.UserBase.IsAdmin)
+{
+<a href="../Create/Create"><div class="text3 button__add">Добавить</div></a>
+}
+<div class="content__film">
+    <a class="film__item" href="watch.html">
+        <div class="item__photo"><img src="img/films/borat.jpg" alt=""></div>
+        <div class="text3 item__title">Борат</div>
+    </a>
+</div>

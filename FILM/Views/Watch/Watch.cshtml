@@ -1,0 +1,68 @@
+﻿@model FILM.Models.Film
+@{
+    Layout = "_Layout";
+}
+<link href="~/css/watch.css" rel="stylesheet" />
+
+<div class="film__categories">
+    <a class="text1" href="">@Model.Type</a>
+    <a class="text1" href="">@Model.Genre</a>
+    <a class="text1" href="">@Model.Year</a>
+    <a class="text1" href="">@Model.Country</a>
+</div>
+<div class="content__item">
+    <div class="item__watch">
+        <div class="item__video"><video controls src="@Model.VideoPath"></video></div>
+        <div class="text2 info__title">@Model.Title</div>
+        <div class="item__buttons">
+            <a href="">
+                <div class="text1 button buttons__like"><span>Смотреть позже</span></div>
+            </a>
+            <a href="">
+                <a href="comments.html"><div class="text1 button buttons__reviews"><span>Отзывы</span></div></a>
+            </a>
+        </div>
+
+    </div>
+    <div class="item__info">
+
+        <div class="info__about">
+            <div class="text2 about__title">О фильме</div>
+            <div class="text1 about__desc">
+                @if (Model.About.Length < 200)
+                {
+                    @Model.About
+                }
+                else
+                {
+                    @Model.About.Substring(0, 200)
+                    <span class="dots">...</span>
+                    <span class="more" style="display: none;">
+                    @Model.About.Substring(200)
+                    </span>
+                    <div class="text1 about__more" onclick="readMore(this)">Читать больше</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content__plot">
+    <div class="text2 plot__title">Сюжет</div>
+    <div class="text1 plot__desc">
+       @if(Model.Plot.Length < 200)
+       {
+           @Model.Plot
+       }
+       else
+       {
+           @Model.Plot.Substring(0, 200)
+           <span class="dots2">...</span>
+           <span class="more2" style="display: none;">
+           @Model.Plot.Substring(200)
+           </span>
+
+           <div class="text1 about__more" onclick="readMorePlot(this)">Читать больше</div>
+       }
+    </div>
+</div>
+<script src="~/js/watch.js"></script>

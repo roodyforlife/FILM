@@ -1,0 +1,241 @@
+﻿.content {
+    margin: 40px 0 0 0;
+    position: relative;
+}
+
+.content__item {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #777777;
+}
+
+.film__categories a {
+    margin: 0 5px 0 0;
+}
+
+.item__video {
+    height: auto;
+    background: #000;
+}
+
+.item__watch {
+    width: 56.4616%;
+    height: auto;
+}
+
+.item__video video {
+    width: 100%;
+    height: 100%;
+}
+
+.item__info {
+    margin: 0 0 0 40px;
+    width: 43.5483%;
+}
+
+.text2 {
+}
+
+.info__title {
+    margin-top: 20px;
+}
+
+.info__about {
+}
+
+.about__title {
+    margin: 0 0 20px 0;
+    font-size: 25px;
+}
+
+.about__desc {
+    font-weight: 500;
+    color: #aaa;
+    line-height: 25px;
+}
+
+.about__more {
+    margin: 10px 0 0 0;
+    font-weight: 100;
+    cursor: pointer;
+}
+
+.item__buttons {
+    margin: 20px 0 0 0;
+    display: flex;
+    justify-content: left;
+}
+
+.button {
+    width: auto;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    color: #999;
+    padding: 20px 20px 20px 60px;
+    position: relative;
+}
+
+.buttons__like {
+}
+
+.buttons__reviews {
+    margin: 0 0 0 20px;
+}
+
+.button span:before {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    content: '';
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+
+.buttons__like span::before {
+    content: '';
+    background: url("../img/like.png") center/80% no-repeat;
+}
+
+.buttons__reviews span:before {
+    content: '';
+    background: url("../img/reviews.png") center/80% no-repeat;
+}
+
+.buttons__reviews {
+}
+
+.button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.content__photos {
+    padding: 20px 0;
+    border-bottom: 1px solid #777777;
+}
+
+.photos__title {
+    margin: 20px 0 0 0;
+    font-size: 25px;
+}
+
+.photos__items {
+    margin: 20px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item {
+    width: 360px;
+    height: 202px;
+    background: #000;
+    margin: 0 20px 20px 0;
+    overflow: hidden;
+}
+
+    .item img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+.content__plot {
+    padding: 40px 0;
+}
+
+.text2 {
+}
+
+.plot__title {
+}
+
+.plot__desc {
+    margin: 20px 0 0 0;
+    font-weight: 100;
+    color: #aaa;
+    line-height: 25px;
+}
+
+@media(max-width: 1211px) {
+    .photos__items .item {
+        width: 300px;
+        height: 168px;
+    }
+}
+
+@media(max-width: 1000px) {
+    .photos__items .item {
+        width: 200px;
+        height: 112px;
+    }
+
+    .button {
+        height: 45px;
+        padding: 15px 10px 20px 40px;
+    }
+
+        .button span:before {
+            top: 12px;
+            left: 12px;
+            width: 20px;
+            height: 20px;
+        }
+}
+
+@media(max-width: 680px) {
+    .photos__items {
+    }
+
+    .item__info {
+        margin: 20px 0 0 0;
+        width: 100%;
+    }
+
+    .item__watch {
+        width: 100%;
+        height: auto;
+    }
+
+    .content__item {
+        display: block;
+    }
+
+    .content__plot {
+        padding: 20px 0 60px 0;
+    }
+}
+
+@media(max-width: 630px) {
+    .content__item {
+        padding: 10px 0 20px 0;
+    }
+
+    .content {
+        margin: 20px 0 0 0;
+    }
+
+    .item {
+        display: none;
+        margin: 0;
+    }
+
+    .photos__items .item:nth-child(1) {
+        display: block;
+    }
+}
+
+@media(max-width: 305px) {
+    .button {
+        padding: 15px 10px 20px 30px;
+        font-size: 10px;
+    }
+
+        .button span:before {
+            top: 14px;
+            left: 9px;
+            width: 15px;
+            height: 15px;
+        }
+}
