@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Immutable;
+using System.IO;
 
 namespace FILM.Services
 {
@@ -34,6 +36,12 @@ namespace FILM.Services
         public Film GetSome(int filmId)
         {
             return db.Films.FirstOrDefault(x => x.Id == filmId);
+        }
+
+        public List<Film> GetSomeBySearch(Search search)
+        {
+            search.Title = search.Title ?? "";
+            return db.Films.ToList().FindAll(x => x.Type.Contains(search.Type) && x.Genre.Contains(search.Genre) && x.Country.Contains(search.Country) && x.Title.Contains(search.Title) && x.Year.Contains(search.Year));
         }
     }
 }

@@ -23,7 +23,7 @@ namespace FILM.Models
         [Required(ErrorMessage = "Это обязательное поле")]
         public string Type { get; set; }
         [Required(ErrorMessage = "Это обязательное поле")]
-        public int Year { get; set; }
+        public string Year { get; set; }
         [Required(ErrorMessage = "Это обязательное поле")]
         public string Genre { get; set; }
 

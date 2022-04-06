@@ -20,6 +20,7 @@ namespace FILM.Services
         }
         public string GetFilePath(Film film, IFormFile uploadedFile)
         {
+            
             var folder = Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot/Files/{film.Title}_{film.Year}_{film.Country}"));
                 string path = $"/Files/{film.Title}_{film.Year}_{film.Country}/" + uploadedFile.FileName;
                 // сохраняем файл в папку Files в каталоге wwwroot

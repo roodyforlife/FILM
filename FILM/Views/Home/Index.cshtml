@@ -1,5 +1,4 @@
-﻿@using FILM.Models
-@model IEnumerable<Film>
+﻿@model FILM.Models.Search
 @{
     Layout = "_Layout";
 }
@@ -8,43 +7,109 @@
     Здесь вы можете найти свой любимый фильм или сериал всего в два клика и прекрасно провести вечер в кругу семьи. База
     наших фильм постоянно обновляется, поэтому вас будет что глянуть
 </div>
+<form asp-action="Index" asp-controller="Home" method="post" enctype="multipart/form-data">
 <div class="content__menu">
-    <div class="menu__category">
-        <select class="text3" name="" id="">
-            <option selected disabled>Жанры</option>
-            <option value="boevik">Боевики</option>
-            <option value="comedian">Комедии</option>
-        </select>
-        <select class="text3" name="" id="">
-            <option selected disabled>Страны</option>
-            <option value="ukraine">Украина</option>
-            <option value="usa">США</option>
-        </select>
-        <select class="text3" name="" id="">
-            <option selected disabled>Годы</option>
-            <option value="2021">2021</option>
-            <option value="2020">2020</option>
-        </select>
+    <div class="search">
+        <input asp-for="Title" class="text3 input__search" type="search" placeholder="Поиск..." autofocus  />
+        <button type="submit" class="text3 search__button">Поиск</button>
     </div>
-    <div class="menu__buttons">
-        <a href=""><div class="text1 menu__zero">Сбросить фильтры</div></a>
-        <a href=""><div class="text3 menu__search">Поиск</div></a>
+    <div class="menu__category">
+        <select asp-for="Genre" class="text3">
+            <option selected disabled value="">Жанр</option>
+            <option value="Артхаус">Артхаус</option>
+            <option value="Биография">Биография</option>
+            <option value="Боевик">Боевик</option>
+            <option value="Вестерн">Вестерн</option>
+            <option value="Военный">Военный</option>
+            <option value="Детектив">Детектив</option>
+            <option value="Детский">Детский</option>
+            <option value="Документальный">Документальный</option>
+            <option value="Драма">Драма</option>
+            <option value="Зарубежный">Зарубежный</option>
+            <option value="Исторический">Исторический</option>
+            <option value="Катастрофы">Катастрофы</option>
+            <option value="Комедия">Комедия</option>
+            <option value="Криминал">Криминал</option>
+            <option value="Мелодрама">Мелодрама</option>
+            <option value="Мистический">Мистический</option>
+            <option value="Музыкальный">Музыкальный</option>
+            <option value="Приключения">Приключения</option>
+            <option value="Семейный">Семейный</option>
+            <option value="Спорт">Спорт</option>
+            <option value="Триллер">Триллер</option>
+            <option value="Ужасы">Ужасы</option>
+            <option value="Фантастика">Фантастика</option>
+            <option value="Фэнтези">Фэнтези</option>
+        </select>
+        <select class="text3" asp-for="Country">
+            <option selected disabled value="">Страна</option>
+            <option value="Австралия">Австралия</option>
+            <option value="Аргентина">Аргентина</option>
+            <option value="Армения">Армения</option>
+            <option value="Беларусь">Беларусь</option>
+            <option value="Бельгия">Бельгия</option>
+            <option value="Бразилия">Бразилия</option>
+            <option value="Великобритания">Великобритания</option>
+            <option value="Венгрия">Венгрия</option>
+            <option value="Германия">Германия</option>
+            <option value="Гонконг">Гонконг</option>
+            <option value="Дания">Дания</option>
+            <option value="Индия">Индия</option>
+            <option value="Ирландия">Ирландия</option>
+            <option value="Испания">Испания</option>
+            <option value="Италия">Италия</option>
+            <option value="Казахстан">Казахстан</option>
+            <option value="Канада">Канада</option>
+            <option value="Китай">Китай</option>
+            <option value="Колумбия">Колумбия</option>
+            <option value="Мексика">Мексика</option>
+            <option value="Новая Зеландия">Новая Зеландия</option>
+            <option value="Норвегия">Норвегия</option>
+            <option value="Польша">Польша</option>
+            <option value="Россия">Россия</option>
+            <option value="СССР">СССР</option>
+            <option value="США">США</option>
+            <option value="Таиланд">Таиланд</option>
+            <option value="Турция">Турция</option>
+            <option value="Украина">Украина</option>
+            <option value="Финляндия">Финляндия</option>
+            <option value="Франция">Франция</option>
+            <option value="Швейцария">Швейцария</option>
+            <option value="Швеция">Швеция</option>
+            <option value="ЮАР">ЮАР</option>
+            <option value="Южная Корея">Южная Корея</option>
+            <option value="Япония">Япония</option>
+        </select>
+        <select class="text3" asp-for="Year">
+            <option selected disabled value="">Годы</option>
+            @for (int i = DateTime.Now.Year; i != 1945; i--)
+            {
+                <option value="@i">@i</option>
+            }
+        </select>
+        <select class="text3" asp-for="Type">
+            <option selected disabled value="">Тип</option>
+            <option value="Фильм">Фильм</option>
+            <option value="Сериал">Сериал</option>
+            <option value="Мультфильм">Мультфильм</option>
+        </select>
     </div>
 </div>
+</form>
 <div class="content__film">
-    @foreach (var u in Model)
+    @foreach (var u in ViewBag.FilmsBase)
     {
-    <div class="film__item">
-        <a asp-action="Watch" asp-controller="Watch" asp-route-filmId="@u.Id">
+    <a asp-action="Watch" asp-controller="Watch" asp-route-filmId="@u.Id">
+        <div class="film__item">
             <div class="item__photo">
                 <img src="@u.PhotoPath" alt="">
                 @if (ViewBag.IsAdmin)
                 {
-                    <a asp-action="Del" asp-route-filmIdDelete="@u.Id"><div class="text3 item__delete">Удалить</div></a>
+                    <a asp-action="Delet" asp-route-filmIdDelete="@u.Id"><div class="text3 item__delete">Удалить</div></a>
                 }
             </div>
             <div class="text3 item__title">@u.Title</div>
-        </a>
-    </div>
+        </div>
+    </a>
     }
 </div>

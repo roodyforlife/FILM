@@ -10,20 +10,22 @@
     <title>Document</title>
 </head>
 <body>
+    <script src="~/js/site.js"></script>
     <div class="container">
         <div class="header">
-            <div class="burger__logo"><img src="~/img/FILM.png" alt=""></div>
             <div class="header__burger">
-                <div class="burger__inforamtion">
-                    <a class="text1" href=""><img class="information__ico" src="~/img/news.png" alt="">Новинки</a>
-                    <a class="text1" href=""><img class="information__ico" src="~/img/filmpng.png" alt="">Фильмы</a>
-                    <a class="text1" href=""><img class="information__ico" src="~/img/series.png" alt="">Сериалы</a>
-                    <a class="text1" href=""><img class="information__ico" src="~/img/cartoon.png" alt="">Мультфильмы</a>
+            <a asp-action="Index" asp-controller="Home" class="burger__logo"><img src="~/img/FILM.png" alt=""></a>
+             <div class="burger__inforamtion">
+                    <a class="text1" asp-action="Index" asp-controller="Home" asp-route-searchNew="@DateTime.Now.Year.ToString()"><img class="information__ico" src="~/img/news.png" alt="">Новинки</a>
+                    <a class="text1" asp-action="Index" asp-controller="Home" asp-route-searchType="Фильм"><img class="information__ico" src="~/img/filmpng.png" alt="">Фильмы</a>
+                    <a class="text1" asp-action="Index" asp-controller="Home" asp-route-searchType="Сериал"><img class="information__ico" src="~/img/series.png" alt="">Сериалы</a>
+                    <a class="text1" asp-action="Index" asp-controller="Home" asp-route-searchType="Мультфильм"><img class="information__ico" src="~/img/cartoon.png" alt="">Мультфильмы</a>
                 </div>
+            </div>
                 <form asp-action="Profile" asp-controller="Profile" method="post" enctype="multipart/form-data">
                     <button type="submit" class="profile"><img src="~/img/profile.png" alt=""></button>
                 </form>
-            </div>
+            
         </div>
         <div class="content">
             @RenderBody();

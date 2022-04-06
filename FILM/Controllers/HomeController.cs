@@ -23,15 +23,16 @@ namespace FILM.Controllers
         [Route("")]
         [Route("Home")]
         [Route("Home/Index")]
-        public IActionResult Index()
+        public IActionResult Index(Search search, string searchType, string searchNew)
         {
+            search.Type = searchType ?? search.Type;
+            search.Year = searchNew ?? search.Year;
             var user = ControllerContext.HttpContext.Session.GetString("Login");
             ViewBag.IsAdmin = user is null ? false : userService.Get(user).IsAdmin;
-            List<Film> films = new();
-            films = applicationService.GetAll(); 
-            return View(films);
+            ViewBag.FilmsBase = applicationService.GetSomeBySearch(search);
+            return View();
         }
-        public IActionResult Del(int filmIdDelete)
+        public IActionResult Delet(int filmIdDelete)
         {
             applicationService.Del(applicationService.GetSome(filmIdDelete));
             return RedirectPermanent("../Home/Index");
