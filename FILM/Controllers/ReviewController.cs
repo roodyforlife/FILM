@@ -19,8 +19,9 @@ namespace FILM.Controllers
         [HttpGet]
         public ViewResult Review(int review)
         {
-            ViewBag.Test = ControllerContext.HttpContext.Session.GetString("Login");
-            ViewBag.FilmsBase = applicationService.GetSome(review);
+            var film = applicationService.GetSome(review);
+            film.Reviews.Reverse();
+            ViewBag.FilmsBase = film;
             return View();
         }
         [HttpPost]
