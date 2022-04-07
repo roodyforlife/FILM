@@ -1,0 +1,24 @@
+﻿@model FILM.Models.Review
+@{
+    Layout = "_Layout";
+}
+<link href="~/css/review.css" rel="stylesheet" />
+<div class="text2 info__title">@ViewBag.FilmsBase.Title</div>
+<div class="text3">Отзывы</div>
+<form asp-action="Review" asp-route-FilmId="@ViewBag.FilmsBase.Id" method="post" enctype="multipart/form-data">
+    <div class="input__block">
+        <input asp-for="Comment" class="text3" type="text" />
+        <input class="text3 submit__button" type="submit" />
+    </div>
+    <span asp-validation-for="Comment" class="field-validation-valid"></span>
+</form>
+@foreach (var u in ViewBag.FilmsBase.Reviews)
+{
+<div class="comment__block">
+    <div class="comment__photo"></div>
+    <div class="comment__info">
+        <div class="text4 comment__date">@u.Date.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("ru-RU"))</div>
+        <div class="text4 comment__text">@u.Comment</div>
+    </div>
+</div>
+}

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Immutable;
 using System.IO;
+using Microsoft.EntityFrameworkCore;
 
 namespace FILM.Services
 {
@@ -22,6 +23,12 @@ namespace FILM.Services
             db.SaveChanges();
         }
 
+        public void AddComment(Review review)
+        {
+            db.Reviews.Add(review);
+            db.SaveChanges();
+        }
+
         public void Del(Film film)
         {
             db.Films.Remove(film);
@@ -35,13 +42,13 @@ namespace FILM.Services
 
         public Film GetSome(int filmId)
         {
-            return db.Films.FirstOrDefault(x => x.Id == filmId);
+            return db.Films.Include(x => x.Reviews).FirstOrDefault(x => x.Id == filmId);
         }
 
         public List<Film> GetSomeBySearch(Search search)
         {
             search.Title = search.Title ?? "";
-            return db.Films.ToList().FindAll(x => x.Type.Contains(search.Type) && x.Genre.Contains(search.Genre) && x.Country.Contains(search.Country) && x.Title.Contains(search.Title) && x.Year.Contains(search.Year));
+            return db.Films.Include(x => x.Reviews).ToList().FindAll(x => x.Type.Contains(search.Type) && x.Genre.Contains(search.Genre) && x.Country.Contains(search.Country) && x.Title.Contains(search.Title) && x.Year.Contains(search.Year));
         }
     }
 }

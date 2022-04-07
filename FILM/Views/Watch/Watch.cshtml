@@ -5,10 +5,10 @@
 <link href="~/css/watch.css" rel="stylesheet" />
 
 <div class="film__categories">
-    <a class="text1" href="">@Model.Type</a>
-    <a class="text1" href="">@Model.Genre</a>
-    <a class="text1" href="">@Model.Year</a>
-    <a class="text1" href="">@Model.Country</a>
+    <span class="text1" href="">@Model.Type</span>
+    <span class="text1" href="">@Model.Genre</span>
+    <span class="text1" href="">@Model.Year</span>
+    <span class="text1" href="">@Model.Country</span>
 </div>
 <div class="content__item">
     <div class="item__watch">
@@ -19,7 +19,7 @@
                 <div class="text1 button buttons__like"><span>Смотреть позже</span></div>
             </a>
             <a href="">
-                <a href="comments.html"><div class="text1 button buttons__reviews"><span>Отзывы</span></div></a>
+                <a asp-action="Review" asp-controller="Review" asp-route-review="@Model.Id"><div class="text1 button buttons__reviews"><span>Отзывы</span></div></a>
             </a>
         </div>
 

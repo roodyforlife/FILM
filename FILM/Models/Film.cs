@@ -26,7 +26,6 @@ namespace FILM.Models
         public string Year { get; set; }
         [Required(ErrorMessage = "Это обязательное поле")]
         public string Genre { get; set; }
-
-
+        public List<Review> Reviews { get; set; } = new();
     }
 }

@@ -13,5 +13,6 @@ namespace FILM.Interfaces
         public Film GetSome(int filmId);
         public void Del(Film film);
         public List<Film> GetSomeBySearch(Search search);
+        public void AddComment(Review review);
     }
 }
